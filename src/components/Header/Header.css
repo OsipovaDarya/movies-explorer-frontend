@@ -1,0 +1,41 @@
+.header__logo {
+    max-width: 38px;
+    width: 100%;
+    max-height: 38px;
+    width: 100%;
+}
+
+.header {
+    padding: 18px 70px;
+    background-color: #f3c1f8;
+    max-width: 1280px;
+    width: 100%;
+}
+.header__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_nav {
+    padding: 18px 70px;
+    max-width: 1280px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .header_nav {
+        padding: 18px 30px;
+    }
+    .header {
+        padding: 19px 30px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        padding: 18px 14px;
+    }
+    .header_nav {
+        padding: 18px 14px;
+    }
+}

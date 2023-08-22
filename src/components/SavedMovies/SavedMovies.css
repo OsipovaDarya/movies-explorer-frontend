@@ -1,0 +1,10 @@
+.saved-movies {
+    max-width: 1140px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .saved-movies {
+        margin: 0 30px;
+    }
+}
