@@ -19,8 +19,8 @@ function MoviesCard(props) {
     const handleRemove = () => { }
 
     return (
-        <section className="movies-card__card">
-            <li className="movies-card">
+        <li className="movies-card__card">
+            <section className="movies-card">
                 <div className="movies-card__body">
                     <div className="movies-card__name">{nameRU}</div>
                     <div className="movies-card__duration">{`${duration}${' минут'}`}</div>
@@ -30,9 +30,9 @@ function MoviesCard(props) {
                 <a href={trailerLink} className="movies-card__link" target="_blank" rel="noreferrer">
                     <img className="movies-card__photo" src={`${imageSource}${image.url}`} alt={nameRU} />
                 </a>
-            </li>
+            </section>
 
-        </section>
+        </li>
     )
 }
 

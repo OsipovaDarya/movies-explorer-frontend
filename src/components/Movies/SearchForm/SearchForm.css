@@ -5,6 +5,12 @@
     display: flex;
     justify-content: space-between;
 }
+.search-form__input:focus {
+    background-color: blanchedalmond;
+    border-radius: 50px;
+    max-height: 30px;
+    height: 100%;
+}
 
 .search-form__text {
     font-size: 13px;

@@ -8,10 +8,10 @@ import movies from "../../utils/films"
 
 function SavedMovies({ loggedIn }) {
     return (
-        <div className="saved-movies">
+        <main className="saved-movies">
             <SearchForm></SearchForm>
             <MoviesCardList movies={movies} loggedIn={loggedIn} />
-        </div>
+        </main>
     )
 }
 export default SavedMovies;

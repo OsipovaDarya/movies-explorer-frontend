@@ -11,7 +11,7 @@ function Profile() {
 
 
     return (
-        <section className="profile">
+        <main className="profile">
             <h1 className="profile__title">Привет, Виталий!</h1>
             <form className="profile__form" >
                 <div className="profile__container">
@@ -28,7 +28,7 @@ function Profile() {
             <button className="profile__button" type="button" onClick={ButtonClick}>Редактировать</button>
             <button className="profile__button" type="button"><Link className="profile__signin" to="/signin">Выйти из аккаунта</Link></button>
 
-        </section >
+        </main >
     )
 }
 export default Profile;

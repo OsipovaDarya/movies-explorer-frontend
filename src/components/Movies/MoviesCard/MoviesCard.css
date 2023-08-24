@@ -62,11 +62,13 @@
 .movies-card__card {
     max-width: 1140px;
     width: 100%;
+    list-style: none;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
     .movies-card {
         display: grid;
+        grid-template-rows: 1fr 64px;
     }
     .movies-card__body {
         grid-row: 2/2;

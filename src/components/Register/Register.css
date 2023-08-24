@@ -41,7 +41,6 @@
     margin-bottom: 10px;
 }
 .register__input {
-    margin-bottom: 20px;
     outline: none;
     background: #f9f9f9;
     border: none;
@@ -123,4 +122,21 @@
     .register__signin {
         font-size: 12px;
     }
+}
+
+.register__input_error {
+    color: #ff4062;
+}
+
+.register__input_error:focus {
+    border-bottom: 1px solid #ff4062;
+}
+
+.register__text-error {
+    margin-top: 4px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #ff4062;
 }

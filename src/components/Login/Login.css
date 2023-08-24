@@ -90,6 +90,19 @@
     text-decoration: none;
     color: #000000;
 }
+.login__text-error {
+    color: #ff4062;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.login__input_error {
+    color: #ff4062;
+}
+.register__input_error:focus {
+    border-bottom: 1px solid #ff4062;
+}
 
 @media screen and (max-width: 768px) {
     .login {
