@@ -80,14 +80,12 @@
         letter-spacing: -0.48px;
     }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
     .techs {
-        padding: 62px 0 70px;
+        padding: 62px 18px 70px;
         background: #fff;
     }
     .techs__title {
-        margin: 0 0 0 18px;
-        max-width: 284px;
         width: 100%;
         font-size: 18px;
         padding-bottom: 27px;

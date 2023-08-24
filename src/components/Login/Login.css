@@ -13,6 +13,14 @@
     margin: 0 0 40px;
 }
 
+.login__input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+
 .login {
     display: flex;
     flex-direction: column;
@@ -60,6 +68,10 @@
     padding: 13px 15px;
     border: none;
     cursor: pointer;
+}
+.login__button:hover {
+    background-color: #f3c1f8;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #f3c1f8;
 }
 
 .login__link {

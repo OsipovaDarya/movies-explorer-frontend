@@ -87,3 +87,15 @@
     background: #f9f9f9;
     border-radius: 6px;
 }
+@media screen and (max-width: 320px) {
+    .burger-menu__button-close {
+        top: 18px;
+        right: 18px;
+    }
+    .burger-menu__links {
+        margin-top: 142px;
+    }
+    .burger-menu__account-container {
+        margin-top: 440px;
+    }
+}

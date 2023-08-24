@@ -1,4 +1,5 @@
-import search from '../../../images/icon__COLOR_invisible.png'
+import search from '../../../images/icon__COLOR_invisible.svg'
+import plecholder from "../../../images/smalltumb.svg"
 
 function SearchForm() {
     return (
@@ -7,6 +8,10 @@ function SearchForm() {
                 <input className="search-form__input" placeholder='Фильм'></input>
                 <button className="search-form__submit"><img className='search-form__img' src={search} alt='картинка лупа' /></button>
             </form>
+            <div className='search-form__placeholder'>
+                <p className='search-form__text'>Короткометражки</p>
+                <img src={plecholder} alt='картинка плейсхолдера' />
+            </div>
         </section>
     )
 }

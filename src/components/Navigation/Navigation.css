@@ -20,6 +20,7 @@
     line-height: 18px;
     color: #000000;
     text-decoration: none;
+    margin-right: 20px;
 }
 
 .navigation__container {
@@ -71,15 +72,23 @@
     text-decoration: none;
     color: #000000;
 }
+.navigation__auth-item-active:hover {
+    opacity: 0.8;
+}
+.navigation__auth-item:hover {
+    opacity: 0.8;
+}
 
 .navigation__auth-item-active {
-    padding: 8px 20px;
+    padding: 7px 20px;
     text-decoration: none;
     color: #ffffff;
     border: none;
     max-width: 76px;
     background: #000000;
     border-radius: 3px;
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .navigation__burger-menu {
@@ -97,6 +106,7 @@
     }
     .navigation__burger-menu {
         display: flex;
+        cursor: pointer;
     }
     .navigation__auth-item-active {
         padding: 7px 20px;

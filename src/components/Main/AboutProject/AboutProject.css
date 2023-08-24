@@ -14,8 +14,8 @@
 }
 .about-project__container {
     display: flex;
-    gap: 90px;
-    margin: 70px 70px 92px 70px;
+    gap: 120px;
+    margin: 70px 70px 92px 0;
 }
 
 .about-project__subtitle {
@@ -42,7 +42,6 @@
     grid-template-columns: 1fr 4fr;
     justify-content: center;
     justify-items: center;
-    margin: 0 70px;
 }
 
 .about-project__one-week {
@@ -134,7 +133,7 @@
         margin: 22px 0 0;
     }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
     .about-project {
         margin: 70px 18px;
     }
@@ -143,7 +142,7 @@
         font-weight: 400;
         line-height: normal;
         letter-spacing: -0.72px;
-        padding-bottom: 26px;
+        padding-bottom: 28px;
     }
     .about-project__container {
         flex-direction: column;
