@@ -1,7 +1,6 @@
 import React from "react";
 import SearchForm from "../Movies/SearchForm/SearchForm";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList"
-import movies from "../../utils/films"
 import { renderMovies } from "../../utils/renderFilms";
 import { CurrentUserContext } from "../ErrorResult/Context/CurrentUserContext";
 import { useEffect, useState, useContext } from "react";
@@ -29,7 +28,7 @@ function SavedMovies() {
 
     }, [savedMovies]);
 
-    const handleSubmitSearch = (keyWord) => {
+    const handleSubmitForSearch = (keyWord) => {
         setKeyCondition(keyWord);
         getFilterMovies(keyWord, isStateShortFilms);
     };
@@ -43,7 +42,7 @@ function SavedMovies() {
     return (
         <main className="saved-movies">
             <SearchForm
-                handleSubmitSearch={handleSubmitSearch}
+                handleSubmitForSearch={handleSubmitForSearch}
                 handleChangeSwitchFilm={handleChangeSwitchFilm}>
             </SearchForm>
             {errorMessage.length !== 0 ? <p className='cards__search-message'>{errorMessage}</p> : <MoviesCardList movies={movies} isDeletePage={true} />}
