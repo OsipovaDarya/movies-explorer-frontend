@@ -22,3 +22,5 @@
 @import url(../src/components/BurgerMenu/BurgerMenu.css);
 @import url(../src/components/Navigation/Navigation.css);
 @import url(../src/components/Preloader/Preloader.css);
+@import url(../src/components/SearchShortFilms/SearchShortFilms.css);
+@import url(../src/components/InfoTooltip/InfoTooltip.css);

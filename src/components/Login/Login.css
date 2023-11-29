@@ -71,7 +71,9 @@
 }
 .login__button:hover {
     background-color: #f3c1f8;
-    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #f3c1f8;
+    box-shadow:
+        0 0 0 2px #fff,
+        0 0 0 4px #f3c1f8;
 }
 
 .login__link {
@@ -102,6 +104,18 @@
 }
 .register__input_error:focus {
     border-bottom: 1px solid #ff4062;
+}
+
+.login__button_disabled {
+    border-radius: 3px;
+    background: #f9f9f9;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 160px;
+    padding: 13px 15px;
+    border: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

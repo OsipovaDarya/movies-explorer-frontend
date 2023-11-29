@@ -53,10 +53,14 @@
 }
 
 .movies-card__like_active {
-    background-image: url("../../../images/d5.svg");
-}
-.movies-card__like_active-heart {
     background-image: url("../../../images/save10.svg");
+    width: 14px;
+    outline: none;
+    border: none;
+    height: 12px;
+    background-color: transparent;
+    margin: 31px 0 21px;
+    cursor: pointer;
 }
 
 .movies-card__card {

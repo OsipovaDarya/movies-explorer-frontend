@@ -18,8 +18,8 @@ function BurgerMenu({ onClose, loggedIn }) {
 
                     <div className='burger-menu__links'>
                         <Link to='/' className={location.pathname === '/' ? 'burger-menu__link ' : 'burger-menu__link'}>Главная</Link>
-                        <Link to='/movies' className={location.pathname === '/movies' ? 'burger-menu__link ' : 'burger-menu__link'}>Фильмы</Link>
-                        <Link to='/saved-movies' className={location.pathname === '/saved-movies' ? 'burger-menu__link ' : 'burger-menu__link'}>Сохранённые фильмы</Link>
+                        <Link to='/movies' className={location.pathname === '/movies' ? 'burger-menu__link ' : 'burger-menu__link'} onClick={() => onClose()}>Фильмы</Link>
+                        <Link to='/saved-movies' className={location.pathname === '/saved-movies' ? 'burger-menu__link ' : 'burger-menu__link'} onClick={() => onClose()}>Сохранённые фильмы</Link>
                     </div>
                     <div className='burger-menu__account-container'>
                         <Link to='/profile' className='burger-menu__account'>Аккаунт</Link>

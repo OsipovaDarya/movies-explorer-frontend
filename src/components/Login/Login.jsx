@@ -1,18 +1,34 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ValidationForm from "../../utils/Validation";
+import Preloader from "../Preloader/Preloader";
 
-function Login(props) {
+function Login({ handleLogin, renderingloading }) {
 
-    const { handleChange, errors, formsValue } = ValidationForm();
+    const { handleChange, errors, formsValue, resetForm } = ValidationForm();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        props.onRegister({ email, password });
-    }
+    function handleSubmit(evt) {
+        evt.preventDefault();
+
+        const resetFormBack = () => {
+            resetForm();
+        }
+        handleLogin(
+            formsValue.email,
+            formsValue.password,
+            resetFormBack
+        );
+    };
+
+    const buttonDisables = !(
+        errors.email === "" &&
+        errors.password === ""
+    );
+
+    const buttonClassName = buttonDisables
+        ? "login__button_disabled"
+        : "login__button";
 
     return (
         <main className="login">
@@ -27,6 +43,8 @@ function Login(props) {
                     placeholder="Email"
                     minLength="2"
                     required
+                    action=''
+                    noValidate
                 />
                 <span className="login__text-error">{errors.email}</span>
 
@@ -42,11 +60,11 @@ function Login(props) {
                     required
                 />
                 <span className="login__text-error">{errors.password}</span>
-                <button className="login__button" type="submit">
-                    Войти
-                </button>
+                <button className={buttonClassName} type="submit" disabled={buttonDisables}>Войти</button>
 
             </form>
+            {renderingloading ? <Preloader /> : ''}
+
             <div className="login__link">Ещё не зарегистрированы?<Link className="login__signin" to="/signup">Регистрация</Link></div>
 
         </main>

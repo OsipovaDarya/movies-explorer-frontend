@@ -1,21 +1,38 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import ValidationForm from "../../utils/Validation";
-
-function Register(props) {
-
-    const { handleChange, errors, formsValue } = ValidationForm();
-
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+import Preloader from "../Preloader/Preloader";
 
 
+function Register({ handelRegistr, renderingloading }) {
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        props.onRegister({ name, email, password });
+    const { handleChange, errors, formsValue, resetForm, } = ValidationForm();
+    function handleSubmit(evt) {
+        evt.preventDefault();
+
+        const resetFormBack = () => {
+            resetForm();
+        };
+
+        handelRegistr(
+            formsValue.name,
+            formsValue.email,
+            formsValue.password,
+            resetFormBack
+        )
+        formsValue.password = "";
+        formsValue.email = "";
+        formsValue.name = "";;
     }
+    const buttonDisables = !(
+        errors.email === "" &&
+        errors.password === "" &&
+        errors.name === ""
+    );
+    const buttonClassName = buttonDisables
+        ? "register__button_disabled"
+        : "register__button";
+
 
 
     return (
@@ -57,11 +74,13 @@ function Register(props) {
                 />
                 <span className="register__text-error">{errors.password}</span>
                 <button
-                    className="register__button" type="submit">
+                    className={buttonClassName} type="submit" disabled={buttonDisables} >
                     Зарегистрироваться
                 </button>
 
             </form>
+            {renderingloading ? <Preloader /> : ''}
+
             <div className="register__link">Уже зарегестрированы?<Link className="register__signin" to="/signin">Войти</Link></div>
 
         </main>

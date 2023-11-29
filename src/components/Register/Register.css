@@ -69,7 +69,9 @@
 }
 .register__button:hover {
     background-color: #f3c1f8;
-    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #f3c1f8;
+    box-shadow:
+        0 0 0 2px #fff,
+        0 0 0 4px #f3c1f8;
 }
 
 .register__link {
@@ -88,6 +90,17 @@
     text-align: center;
     text-decoration: none;
     color: #000000;
+}
+.register__button_disabled {
+    background: #f9f9f9;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 69px;
+    padding: 13px 15px;
+    border: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
