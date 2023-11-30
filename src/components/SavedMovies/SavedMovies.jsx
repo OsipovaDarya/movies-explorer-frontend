@@ -42,7 +42,7 @@ function SavedMovies() {
     return (
         <main className="saved-movies">
             <SearchForm
-                handleSubmitForSearch={handleSubmitForSearch}
+                handleSubmitSearch={handleSubmitForSearch}
                 handleChangeSwitchFilm={handleChangeSwitchFilm}>
             </SearchForm>
             {errorMessage.length !== 0 ? <p className='cards__search-message'>{errorMessage}</p> : <MoviesCardList movies={movies} isDeletePage={true} />}

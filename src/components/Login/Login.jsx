@@ -7,7 +7,6 @@ function Login({ handleLogin, renderingloading }) {
 
     const { handleChange, errors, formsValue, resetForm } = ValidationForm();
 
-
     function handleSubmit(evt) {
         evt.preventDefault();
 
@@ -58,12 +57,12 @@ function Login({ handleLogin, renderingloading }) {
                     placeholder="password"
                     minLength="5"
                     required
+                    noValidate
                 />
                 <span className="login__text-error">{errors.password}</span>
                 <button className={buttonClassName} type="submit" disabled={buttonDisables}>Войти</button>
-
+                {renderingloading ? <Preloader /> : ''}
             </form>
-            {renderingloading ? <Preloader /> : ''}
 
             <div className="login__link">Ещё не зарегистрированы?<Link className="login__signin" to="/signup">Регистрация</Link></div>
 

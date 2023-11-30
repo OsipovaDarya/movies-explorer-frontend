@@ -7,17 +7,6 @@
     display: none;
 }
 
-.search-short-films__switch {
-    position: absolute;
-    width: 36px;
-    height: 20px;
-    top: -2px;
-    left: -45px;
-    cursor: pointer;
-    background-color: #2be080;
-    border-radius: 20px;
-}
-
 .search-short-films__switch:before {
     position: absolute;
     content: "";
@@ -38,6 +27,17 @@
     font-size: 13px;
     line-height: 18px;
     cursor: pointer;
+}
+
+.search-short-films__switch {
+    position: absolute;
+    width: 36px;
+    height: 20px;
+    top: -2px;
+    left: -45px;
+    cursor: pointer;
+    background-color: #2be080;
+    border-radius: 20px;
 }
 
 @media screen and (max-width: 500px) {

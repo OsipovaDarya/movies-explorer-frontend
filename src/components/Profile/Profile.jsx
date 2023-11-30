@@ -9,14 +9,16 @@ import api from "../../utils/MainApi";
 function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
     const currentContext = useContext(CurrentUserContext);
     const [currentUser, setCurrentUser] = useState(currentContext.currentUser);
-    const initialValues = {
+
+    const [isEdit, setIsEdit] = useState(false);
+    const originalValues = {
         username: currentUser.name,
         email: currentUser.email,
     };
-    const { handleChange, formsValue, errors, isValid, resetForm } = Validation(initialValues);
-    const [isEdit, setIsEdit] = useState(false); // редактируем инфу о себе
+    const { handleChange, formsValue, errors, isValid, resetForm } = Validation(originalValues);
+
     const [renderingloading, setRenderingloading] = useState(false);
-    const nameInputRef = useRef(false);
+    const InputRef = useRef(false);
 
     function onUpdateUser(value) {
         setRenderingloading(true);
@@ -30,10 +32,6 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
                     status: true,
                     text: "Редактирование успешно заверешено",
                 })
-                setTimeout(() => {
-                    setIsEditInfoTooltip(false);
-                    setRenderingloading(false);
-                }, 2000);
             })
             .catch(err => {
                 console.log('fsd', err);
@@ -63,31 +61,21 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
         resetForm(currentUser, {}, true);
     };
 
-    // Редактировать профиль
-    function handleEditButton(evt) {
+    function handleRedactButton(evt) {
         evt.preventDefault();
-
-
         setIsEdit(true);
-
-        nameInputRef.current.focus();
-
+        InputRef.current.focus();
     };
 
-    const isButtonActive = isValid
+    const isButtonSave = isValid
         && !renderingloading
-        && (formsValue.name !== initialValues.username || formsValue.email !== initialValues.email);
+        && (formsValue.name !== originalValues.username || formsValue.email !== originalValues.email);
 
-    //
     useEffect(() => {
         if (currentUser) {
             resetForm(currentUser, {}, true);
         }
     }, [currentUser, resetForm])
-
-
-
-
 
 
     return (
@@ -99,38 +87,39 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
                     <input className="profile__input"
                         type='text'
                         id='name'
-                        ref={nameInputRef}
-                        required
-                        minLength={2}
-                        maxLength={30}
+                        ref={InputRef}
                         placeholder='Name'
                         name='name'
+                        minLength={2}
+                        maxLength={30}
                         value={formsValue.name || ''}
                         onChange={handleChange}
+                        required
                         disabled={renderingloading || !isEdit}></input>
                 </div>
-                <span className='profile__error name-error' id='name-error'>{errors.name}</span>
+                <span className='profile__text-error' id='name-error'>{errors.name}</span>
                 <p className="profile__line"></p>
                 <div className="profile__container">
                     <div className="profile__label" htmlFor='email'>Email</div>
                     <input className="profile__input" type='email'
                         id='email'
-                        required
-                        minLength={4}
-                        maxLength={40}
                         placeholder='email'
                         name='email'
                         value={formsValue.email || ''}
                         onChange={handleChange}
-                        disabled={renderingloading || !isEdit}></input>
+                        minLength={5}
+                        maxLength={40}
+                        required
+                        disabled={renderingloading || !isEdit}>
+                    </input>
                 </div>
-                <span className='profile__error email-error' id='email-error'>{errors.email}</span>
+                <span className='profile__text-error' id='email-error'>{errors.email}</span>
 
 
                 {isEdit ?
-                    <button className="profile__button" type='submit' disabled={!isButtonActive}>Сохранить</button>
+                    <button className="profile__button" type='submit' disabled={!isButtonSave}>Сохранить</button>
                     :
-                    <button className="profile__button-save" type="button" onClick={handleEditButton}>Редактировать</button>}
+                    <button className="profile__button-save" type="button" onClick={handleRedactButton}>Редактировать</button>}
 
                 {!isEdit ?
                     <button className="profile__button-exit" type="button" onClick={onSignOut}>Выйти из аккаунта</button>

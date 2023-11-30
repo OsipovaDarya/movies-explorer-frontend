@@ -13,8 +13,9 @@ function MoviesCard({ movie, isSavedMoviePage, saveStatus }) {
     const [isSavedMovie, setIsSavedMovie] = useState(saveStatus.isSaved);
     const [renderingloading, setRenderingloading] = useState(false)
     const [saveId, setSaveId] = useState(saveStatus.id);
-    const { pathname } = useLocation();
     const imageSource = 'https://api.nomoreparties.co';
+    const { pathname } = useLocation();
+
 
 
     // сохранить фильм

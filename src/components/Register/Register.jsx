@@ -77,9 +77,8 @@ function Register({ handelRegistr, renderingloading }) {
                     className={buttonClassName} type="submit" disabled={buttonDisables} >
                     Зарегистрироваться
                 </button>
-
+                {renderingloading ? <Preloader /> : ''}
             </form>
-            {renderingloading ? <Preloader /> : ''}
 
             <div className="register__link">Уже зарегестрированы?<Link className="register__signin" to="/signin">Войти</Link></div>
 

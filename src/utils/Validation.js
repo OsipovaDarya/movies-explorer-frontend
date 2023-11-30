@@ -5,6 +5,7 @@ function Validation() {
     const [errors, setErrors] = useState({});
     const [formsValue, setFormsValue] = useState({});
     const [isValid, setIsValid] = useState(false);
+    const [isLocked, setLock] = useState(false);
 
     // const handleChange = (e) => {
     //     const { name, value } = e.target;
