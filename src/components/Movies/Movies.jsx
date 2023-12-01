@@ -35,8 +35,8 @@ function Movies() {
             setSearchedMovies(movies);
             localStorage.setItem('storageSearchResult', JSON.stringify(movies));
             movies.length === 0
-                ? setErrorMessage('Ничего не найдено')
-                : setErrorMessage('');
+                ? setErrorMessage('')
+                : setErrorMessage('Ничего не найдено');
         };
 
         if (storageAllMovies.length === 0) {
