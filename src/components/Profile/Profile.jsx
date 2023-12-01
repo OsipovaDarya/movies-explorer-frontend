@@ -6,32 +6,34 @@ import api from "../../utils/MainApi";
 
 
 
+
 function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
     const currentContext = useContext(CurrentUserContext);
     const [currentUser, setCurrentUser] = useState(currentContext.currentUser);
-
-    const [isEdit, setIsEdit] = useState(false);
-    const originalValues = {
+    const initialValues = {
         username: currentUser.name,
         email: currentUser.email,
     };
-    const { handleChange, formsValue, errors, isValid, resetForm } = Validation(originalValues);
-
+    const { handleChange, formsValue, errors, isValid, resetForm } = Validation(initialValues);
+    const [isEdit, setIsEdit] = useState(false);
     const [renderingloading, setRenderingloading] = useState(false);
-    const InputRef = useRef(false);
+    const nameInputRef = useRef(false);
 
     function onUpdateUser(value) {
         setRenderingloading(true);
         api
             .editProfile(value)
             .then((user) => {
-                console.log('asfasfasf', user)
                 setCurrentUser(user);
                 setIsEditInfoTooltip(true);
                 setRegistrForm({
                     status: true,
                     text: "Редактирование успешно заверешено",
                 })
+                setTimeout(() => {
+                    setIsEditInfoTooltip(false);
+                    setRenderingloading(false);
+                }, 2000);
             })
             .catch(err => {
                 console.log('fsd', err);
@@ -61,16 +63,22 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
         resetForm(currentUser, {}, true);
     };
 
-    function handleRedactButton(evt) {
+    // Редактировать профиль
+    function handleEditButton(evt) {
         evt.preventDefault();
+
+
         setIsEdit(true);
-        InputRef.current.focus();
+
+        nameInputRef.current.focus();
+
     };
 
-    const isButtonSave = isValid
+    const isButtonActive = isValid
         && !renderingloading
-        && (formsValue.name !== originalValues.username || formsValue.email !== originalValues.email);
+        && (formsValue.name !== initialValues.username || formsValue.email !== initialValues.email);
 
+    //
     useEffect(() => {
         if (currentUser) {
             resetForm(currentUser, {}, true);
@@ -87,7 +95,7 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
                     <input className="profile__input"
                         type='text'
                         id='name'
-                        ref={InputRef}
+                        ref={nameInputRef}
                         placeholder='Name'
                         name='name'
                         minLength={2}
@@ -117,16 +125,19 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
 
 
                 {isEdit ?
-                    <button className="profile__button" type='submit' disabled={!isButtonSave}>Сохранить</button>
+                    <button className="profile__button" type='submit' disabled={!isButtonActive}>Сохранить</button>
                     :
-                    <button className="profile__button-save" type="button" onClick={handleRedactButton}>Редактировать</button>}
+                    <button className="profile__button-save" type="button" onClick={handleEditButton}>Редактировать</button>}
 
                 {!isEdit ?
                     <button className="profile__button-exit" type="button" onClick={onSignOut}>Выйти из аккаунта</button>
                     : ''}
-                {renderingloading ? <Preloader /> : ''}
+
             </form>
         </main >
     )
 }
 export default Profile;
+
+
+

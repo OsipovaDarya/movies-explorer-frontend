@@ -54,6 +54,7 @@ function Register({ handelRegistr, renderingloading }) {
                 <input className={!errors.email ? "register__input" : "register__input register__input_error"}
                     id="email"
                     name="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     type="email"
                     value={formsValue.email || ''}
                     onChange={handleChange}

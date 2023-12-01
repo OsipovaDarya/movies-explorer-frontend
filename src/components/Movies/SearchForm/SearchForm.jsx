@@ -29,6 +29,7 @@ function SearchForm({ showError, handleSubmitSearch, handleChangeSwitchFilm }) {
 
 
 
+
     return (
         <section className="search-form">
             <form className="search-form__form"

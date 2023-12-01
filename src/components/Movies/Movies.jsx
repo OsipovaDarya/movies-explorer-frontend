@@ -67,7 +67,7 @@ function Movies() {
     }, [savedMovies]
     );
 
-    const handleSubmitForSearch = (keyWord) => {
+    const handleSubmitSearch = (keyWord) => {
         setKeyCondition(keyWord);
         localStorage.setItem('storageKeyWord', keyWord);
         getFilteredMovies(keyWord, isStateShortFilms);
@@ -83,7 +83,7 @@ function Movies() {
     return (
         <main className="movies">
             <SearchForm
-                handleSubmitSearch={handleSubmitForSearch}
+                handleSubmitSearch={handleSubmitSearch}
                 handleChangeSwitchFilm={handleChangeSwitchFilm}
                 showError={setErrorMessage} />
             {renderDownload ? <Preloader /> : ''}

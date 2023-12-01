@@ -5,7 +5,6 @@ function Validation() {
     const [errors, setErrors] = useState({});
     const [formsValue, setFormsValue] = useState({});
     const [isValid, setIsValid] = useState(false);
-    const [isLocked, setLock] = useState(false);
 
     // const handleChange = (e) => {
     //     const { name, value } = e.target;
@@ -13,10 +12,6 @@ function Validation() {
         const target = e.target;
         const name = target.name;
         const value = target.value;
-
-
-
-        console.log(name, 'afsaf')
 
         setFormsValue({
             ...formsValue,

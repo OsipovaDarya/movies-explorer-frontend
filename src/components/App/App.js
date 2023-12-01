@@ -18,6 +18,7 @@ import api from '../../utils/MainApi';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { useNavigate, Navigate } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRouts/ProtectedRouts';
+import { isCompositeComponent } from 'react-dom/test-utils';
 
 
 
@@ -83,20 +84,14 @@ function App() {
       .finally(() => setRenderingloading(false));
   }
 
-
-
-
-
-
   useEffect(() => {
     if (loggedIn) {
       setRenderingloading(true);
       Promise.all([api.getInfo(), api.getSavedMovies()])
         .then(([user, movies]) => {
-          console.log(user, 'afsafasgasgsagasgsagsaga')
+          console.log(user, 'afsafsafasfasf')
           setCurrentUser(user);
           setSavedMovies(movies);
-
         })
         .catch((err) => {
           console.log(err);
@@ -137,7 +132,6 @@ function App() {
     api.checkToken('');
     localStorage.clear();
   };
-
 
 
 
