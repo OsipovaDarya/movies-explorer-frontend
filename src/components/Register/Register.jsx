@@ -20,9 +20,6 @@ function Register({ handelRegistr, renderingloading }) {
             formsValue.password,
             resetFormBack
         )
-        formsValue.password = "";
-        formsValue.email = "";
-        formsValue.name = "";;
     }
     const buttonDisables = !(
         errors.email === "" &&
