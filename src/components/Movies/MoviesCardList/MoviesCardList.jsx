@@ -3,7 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import { CurrentUserContext } from "../../ErrorResult/Context/CurrentUserContext";
 import { useLocation } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { MOBILE, DESKTOP, TABLET, SCREEN_SM, SCREEN_MD } from '../../../utils/constans';
+import { MOBILE, DESKTOP, TABLET, SCREEN_SM, SCREEN_MD, SCREEN_XL } from '../../../utils/constans';
 
 
 function MoviesCardList({ movies, isDeletePage }) {
@@ -44,7 +44,7 @@ function MoviesCardList({ movies, isDeletePage }) {
 
     const handleButtonMore = () => {
         setCardCounter((current) => {
-            return current + (displayWidth <= 1010 ? 2 : 3);
+            return current + (displayWidth <= SCREEN_XL ? 2 : 3);
         })
     }
 
