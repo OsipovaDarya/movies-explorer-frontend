@@ -17,7 +17,7 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
     const { handleChange, formsValue, errors, isValid, resetForm } = Validation(initialValues);
     const [isEdit, setIsEdit] = useState(false);
     const [renderingloading, setRenderingloading] = useState(false);
-    const nameInputRef = useRef(false);
+
 
     function onUpdateUser(value) {
         setRenderingloading(true);
@@ -30,10 +30,6 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
                     status: true,
                     text: "Редактирование успешно заверешено",
                 })
-                setTimeout(() => {
-                    setIsEditInfoTooltip(false);
-                    setRenderingloading(false);
-                }, 2000);
             })
             .catch(err => {
                 console.log('fsd', err);
@@ -70,7 +66,6 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
 
         setIsEdit(true);
 
-        nameInputRef.current.focus();
 
     };
 
@@ -95,7 +90,6 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
                     <input className="profile__input"
                         type='text'
                         id='name'
-                        ref={nameInputRef}
                         placeholder='Name'
                         name='name'
                         minLength={2}
