@@ -3,6 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import { CurrentUserContext } from "../../ErrorResult/Context/CurrentUserContext";
 import { useLocation } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+import { MOBILE, DESKTOP, TABLET, SCREEN_SM, SCREEN_MD } from '../../../utils/constans';
 
 
 function MoviesCardList({ movies, isDeletePage }) {
@@ -24,12 +25,12 @@ function MoviesCardList({ movies, isDeletePage }) {
     }, []);
 
     useEffect(() => {
-        if (displayWidth <= 480) {
-            setCardCounter(5);
-        } else if (displayWidth <= 1010) {
-            setCardCounter(8);
+        if (displayWidth <= SCREEN_SM) {
+            setCardCounter(MOBILE);
+        } else if (displayWidth <= SCREEN_MD) {
+            setCardCounter(TABLET);
         } else {
-            setCardCounter(12);
+            setCardCounter(DESKTOP);
         }
     }, [displayWidth, movies.length]);
 
