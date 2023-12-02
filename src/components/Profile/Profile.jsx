@@ -73,7 +73,9 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
         && !renderingloading
         && (formsValue.name !== initialValues.username || formsValue.email !== initialValues.email);
 
-    //
+    const buttonClassName = `profile__button ${isButtonActive ? "profile__button_disabled" : "button-hover"
+        }`;
+
     useEffect(() => {
         if (currentUser) {
             resetForm(currentUser, {}, true);
@@ -119,7 +121,7 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
 
 
                 {isEdit ?
-                    <button className="profile__button" type='submit' disabled={!isButtonActive}>Сохранить</button>
+                    <button className={buttonClassName} type='submit' disabled={!isButtonActive}>Сохранить</button>
                     :
                     <button className="profile__button-save" type="button" onClick={handleEditButton}>Редактировать</button>}
 

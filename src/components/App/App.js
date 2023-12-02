@@ -74,14 +74,21 @@ function App() {
         setLoggedIn(true)
         navigate("/movies", { replace: true })
       })
-      .catch(() => {
-        setRegistrForm({
-          status: false,
-          text: 'Не правильная почта или пароль',
-        })
-        setIsEditInfoTooltip(true);
+      .catch((res) => {
+        if (res === "Ошибка 409") {
+          setIsEditInfoTooltip(true);
+          registrForm({
+            status: false,
+            text: "Пользователь с такой почтой уже зарегистрирован",
+          });
+        } else if (!res) {
+          registrForm({
+            status: false,
+            text: "Что-то пошло не так! Попробуйте ещё раз.",
+          });
+        }
       })
-      .finally(() => setRenderingloading(false));
+      .finally(() => setIsEditInfoTooltip(true));
   }
 
   useEffect(() => {
