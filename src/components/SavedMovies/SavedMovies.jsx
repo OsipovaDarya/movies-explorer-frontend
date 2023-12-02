@@ -28,7 +28,7 @@ function SavedMovies() {
 
     }, [savedMovies]);
 
-    const handleSubmitForSearch = (keyWord) => {
+    const handleSubmitSearch = (keyWord) => {
         setKeyCondition(keyWord);
         getFilterMovies(keyWord, isStateShortFilms);
     };
@@ -43,7 +43,7 @@ function SavedMovies() {
     return (
         <main className="saved-movies">
             <SearchForm
-                handleSubmitSearch={handleSubmitForSearch}
+                handleSubmitSearch={handleSubmitSearch}
                 handleChangeSwitchFilm={handleChangeSwitchFilm}>
             </SearchForm>
             {errorMessage.length !== 0 ? <p className='cards__search-message'>{errorMessage}</p> : <MoviesCardList movies={movies} isDeletePage={true} />}

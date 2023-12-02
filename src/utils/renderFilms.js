@@ -1,4 +1,4 @@
-
+import { SHORT_FILM } from "./constans";
 
 const renderMovies = (movies, keyWord, isShort) => {
     const word = keyWord.toLowerCase().trim();
@@ -11,7 +11,7 @@ const renderMovies = (movies, keyWord, isShort) => {
         });
 
     if (isShort)
-        return filterForMovies.filter((movie) => movie.duration <= 40);
+        return filterForMovies.filter((movie) => movie.duration <= SHORT_FILM);
 
     return filterForMovies;
 };
