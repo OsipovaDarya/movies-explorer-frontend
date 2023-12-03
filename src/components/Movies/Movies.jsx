@@ -9,34 +9,25 @@ import { apiMovies } from '../../utils/MoviesApi';
 
 
 function Movies() {
-    const [keyCondition, setKeyCondition] = useState('');
-    const [isStateShortFilms, setIsStateShortFilms] = useState(false);
+    const [keyCondition, setKeyCondition] = useState(() => localStorage.getItem('storageKeyWord') || '');
+    const [isStateShortFilms, setIsStateShortFilms] = useState(() => JSON.parse(localStorage.getItem('storageIsShort') || 'false'));
     const [renderDownload, setrenderDownload] = useState(false);
-    const [searchedMovies, setSearchedMovies] = useState([]);
+    const [searchedMovies, setSearchedMovies] = useState(() => JSON.parse(localStorage.getItem('storageSearchResult') || '[]'));
     const [errorMessage, setErrorMessage] = useState('');
     const { savedMovies } = useContext(CurrentUserContext);
 
 
-    const storageAllMovies = JSON.parse(localStorage.getItem('storageAllMovies')) || [];
+    const storageAllMovies = JSON.parse(localStorage.getItem('storageAllMovies') || '[]')
 
-    useEffect(() => {
-        const storageSearchResult = JSON.parse(localStorage.getItem('storageSearchResult')) || [];
-        const storageKeyWord = localStorage.getItem('storageKeyWord') || '';
-        const storageIsShort = JSON.parse(localStorage.getItem('storageIsShort')) || false;
-
-        storageSearchResult && setSearchedMovies(storageSearchResult);
-        storageKeyWord && setKeyCondition(storageKeyWord);
-        storageIsShort && setIsStateShortFilms(storageIsShort);
-    }, []);
 
     const getFilteredMovies = (keyWord, isShortMovies) => {
 
         function setupFilteredFilms(movies) {
             setSearchedMovies(movies);
             localStorage.setItem('storageSearchResult', JSON.stringify(movies));
-            movies.length === 0
+            movies.length === 0 && !(storageAllMovies.length === 0)
                 ? setErrorMessage('Ничего не найдено')
-                : setErrorMessage('');
+                : setErrorMessage('')
         };
 
         if (storageAllMovies.length === 0) {
@@ -44,7 +35,6 @@ function Movies() {
             apiMovies.getMovies()
                 .then((allMovies) => {
                     localStorage.setItem('storageAllMovies', JSON.stringify(allMovies));
-                    console.log('afsafasfasf', allMovies)
                     const filteredMovies = keyWord
                         ? renderMovies(allMovies, keyWord, isShortMovies)
                         : [];
@@ -55,9 +45,11 @@ function Movies() {
                 })
                 .finally(() => setrenderDownload(false));
         } else {
+            console.log(keyWord, 'keyword')
             const filteredMovies = keyWord
                 ? renderMovies(storageAllMovies, keyWord, isShortMovies)
                 : [];
+
             setupFilteredFilms(filteredMovies);
         }
     };

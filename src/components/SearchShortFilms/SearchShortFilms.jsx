@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { MOBILE, DESKTOP, TABLET, SCREEN_SM, SCREEN_MD } from '../../utils/constans';
+
 
 function SearchShortFilms({ handleShortFilms }) {
     const { pathname } = useLocation();
