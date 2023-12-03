@@ -24,6 +24,7 @@ function Movies() {
 
         function setupFilteredFilms(movies) {
             setSearchedMovies(movies);
+            console.log("fsdfsdf", localStorage)
             localStorage.setItem('storageSearchResult', JSON.stringify(movies));
             movies.length === 0 && !(storageAllMovies.length === 0)
                 ? setErrorMessage('Ничего не найдено')

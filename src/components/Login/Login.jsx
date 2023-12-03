@@ -44,6 +44,7 @@ function Login({ handleLogin, renderingloading }) {
                     required
                     action=''
                     noValidate
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 />
                 <span className="login__text-error">{errors.email}</span>
 
@@ -61,7 +62,7 @@ function Login({ handleLogin, renderingloading }) {
                 />
                 <span className="login__text-error">{errors.password}</span>
                 <button className={buttonClassName} type="submit" disabled={buttonDisables}>Войти</button>
-                {renderingloading ? <Preloader /> : ''}
+
             </form>
 
             <div className="login__link">Ещё не зарегистрированы?<Link className="login__signin" to="/signup">Регистрация</Link></div>

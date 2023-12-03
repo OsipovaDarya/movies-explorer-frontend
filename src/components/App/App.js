@@ -129,7 +129,7 @@ function App() {
     setCurrentUser({});
     setSavedMovies([]);
     navigate('/');
-    api.checkToken('');
+
     localStorage.clear();
   };
 
