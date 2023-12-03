@@ -48,7 +48,7 @@ function SearchForm({ showError, handleSubmitSearch, handleChangeSwitchFilm }) {
                 <button className="search-form__submit"><img className='search-form__img' src={search} alt='картинка лупа' /></button>
                 <span className="search-form-error"></span>
             </form>
-            <SearchShortFilms handleShortFilms={handleChangeSwitchFilm} />
+            <SearchShortFilms handleShortFilms={handleChangeSwitchFilm} actualSeachInput={formsValue['find-input']} />
 
             {/* <div className='search-form__placeholder'>
                 <p className='search-form__text'>Короткометражки</p>

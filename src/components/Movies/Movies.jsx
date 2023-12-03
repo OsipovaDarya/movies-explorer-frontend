@@ -45,7 +45,6 @@ function Movies() {
                 })
                 .finally(() => setrenderDownload(false));
         } else {
-            console.log(keyWord, 'keyword')
             const filteredMovies = keyWord
                 ? renderMovies(storageAllMovies, keyWord, isShortMovies)
                 : [];
@@ -65,10 +64,10 @@ function Movies() {
         getFilteredMovies(keyWord, isStateShortFilms);
     };
 
-    const handleChangeSwitchFilm = (isChecked) => {
+    const handleChangeSwitchFilm = (isChecked, actualSearchInput) => {
         setIsStateShortFilms(isChecked);
         localStorage.setItem('storageIsShort', isChecked);
-        getFilteredMovies(keyCondition, isChecked);
+        getFilteredMovies(actualSearchInput, isChecked);
     };
 
 

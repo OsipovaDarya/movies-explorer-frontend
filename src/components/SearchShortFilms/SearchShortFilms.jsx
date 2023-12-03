@@ -2,13 +2,13 @@ import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 
-function SearchShortFilms({ handleShortFilms }) {
+function SearchShortFilms({ handleShortFilms, actualSeachInput }) {
     const { pathname } = useLocation();
     const [isCheckFilm, setIsisCheckFilm] = useState(false);
 
     function handleFilmSwitch() {
         setIsisCheckFilm(!isCheckFilm);
-        handleShortFilms(!isCheckFilm);
+        handleShortFilms(!isCheckFilm, actualSeachInput);
     }
 
     useEffect(() => {
