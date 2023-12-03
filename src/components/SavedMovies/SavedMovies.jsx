@@ -17,7 +17,7 @@ function SavedMovies() {
 
     const getFilterMovies = (keyWord, isShort) => {
         const filterMovies = renderMovies(savedMovies, keyWord, isShort);
-        filterMovies.length === 0 ? setErrorMessage("Ничего не найдено") : setErrorMessage('');
+        filterMovies.length === 0 ? setErrorMessage("Ничего не сохранили") : setErrorMessage('');
 
         setMovies(filterMovies);
     };
