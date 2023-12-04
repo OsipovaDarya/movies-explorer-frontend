@@ -98,6 +98,7 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
                         value={formsValue.name || ''}
                         onChange={handleChange}
                         required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         disabled={renderingloading || !isEdit}></input>
                 </div>
                 <span className='profile__text-error' id='name-error'>{errors.name}</span>
