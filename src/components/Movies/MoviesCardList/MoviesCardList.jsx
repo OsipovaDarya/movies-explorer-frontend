@@ -4,11 +4,13 @@ import { CurrentUserContext } from "../../ErrorResult/Context/CurrentUserContext
 import { useLocation } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { MOBILE, DESKTOP, TABLET, SCREEN_SM, SCREEN_MD, SCREEN_XL } from '../../../utils/constans';
+import api from "../../../utils/MainApi";
 
 
 function MoviesCardList({ movies, isDeletePage }) {
     const { pathname } = useLocation();
     const { savedMovies } = useContext(CurrentUserContext);
+
 
     const [isMoreButton, setIsMoreButton] = useState(false);
     const [cardCounter, setCardCounter] = useState(0);
@@ -41,6 +43,9 @@ function MoviesCardList({ movies, isDeletePage }) {
         }
     }, [pathname, movies.length, cardCounter]);
 
+
+
+
     const handleButtonMore = () => {
         setCardCounter((current) => {
             return current + (displayWidth <= SCREEN_XL ? 2 : 3);
@@ -49,6 +54,7 @@ function MoviesCardList({ movies, isDeletePage }) {
 
     const checkIsSave = (movie) => {
         const findedFilms = savedMovies.find((item) => item.movieId === (movie.movieId || movie.id));
+
         return findedFilms
             ? { isSaved: true, id: findedFilms._id }
             : { isSaved: false, id: '' }

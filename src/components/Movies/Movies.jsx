@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback, useMemo } from 'react';
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
@@ -8,21 +8,26 @@ import { apiMovies } from '../../utils/MoviesApi';
 
 
 
-function Movies() {
-    const [keyCondition, setKeyCondition] = useState(() => localStorage.getItem('storageKeyWord') || '');
-    const [isStateShortFilms, setIsStateShortFilms] = useState(() => JSON.parse(localStorage.getItem('storageIsShort') || 'false'));
+function Movies({ renderLoading }) {
+    const [keyCondition, setKeyCondition] = useState('');
+    const [isStateShortFilms, setIsStateShortFilms] = useState(() => JSON.parse(localStorage.getItem('storageIsShort')) || false);
     const [renderDownload, setRenderDownload] = useState(false);
-    const [searchedMovies, setSearchedMovies] = useState(() => JSON.parse(localStorage.getItem('storageSearchResult') || '[]'));
+    const [searchedMovies, setSearchedMovies] = useState(() => JSON.parse(localStorage.getItem('storageSearchResult')) || []);
+    const storageAllMovies = useMemo(() => JSON.parse(localStorage.getItem('storageAllMovies')) || [], []);
     const [errorMessage, setErrorMessage] = useState('');
-    const { savedMovies } = useContext(CurrentUserContext);
 
-    const storageAllMovies = JSON.parse(localStorage.getItem('storageAllMovies') || '[]')
 
+    useEffect(() => {
+        const storageKeyWord = localStorage.getItem('storageKeyWord') || '';
+
+        storageKeyWord && setKeyCondition((_) => storageKeyWord);
+
+    }, [keyCondition]);
 
     const getFilteredMovies = (keyWord, isShortMovies) => {
 
         function setupFilteredFilms(movies) {
-            setSearchedMovies(movies);
+            setSearchedMovies([...movies]);
             localStorage.setItem('storageSearchResult', JSON.stringify(movies));
             movies.length === 0 && !(storageAllMovies.length === 0)
                 ? setErrorMessage('Ничего не найдено')
@@ -38,29 +43,26 @@ function Movies() {
                     const filteredMovies = keyWord
                         ? renderMovies(allMovies, keyWord, isShortMovies)
                         : [];
-                    setupFilteredFilms(filteredMovies);
+                    setupFilteredFilms([...filteredMovies]);
                 })
                 .catch((err) => {
                     setErrorMessage('Ничего не найдено');
                 })
                 .finally(() => setRenderDownload(false));
         } else {
-            console.log('3')
 
             const filteredMovies = keyWord
                 ? renderMovies(storageAllMovies, keyWord, isShortMovies)
                 : [];
 
-            setupFilteredFilms(filteredMovies);
+            setupFilteredFilms([...filteredMovies]);
         }
-    };
+    }
 
     useEffect(() => {
         getFilteredMovies(keyCondition, isStateShortFilms);
-    }, [savedMovies]
+    }, [keyCondition]
     );
-
-
 
     const handleSubmitSearch = (keyWord) => {
         setKeyCondition(keyWord);
@@ -74,6 +76,10 @@ function Movies() {
         getFilteredMovies(actualSearchInput, isChecked);
     };
 
+    if (renderLoading) {
+        return <></>
+    }
+
 
     return (
         <main className="movies">
@@ -81,7 +87,7 @@ function Movies() {
                 handleSubmitSearch={handleSubmitSearch}
                 handleChangeSwitchFilm={handleChangeSwitchFilm}
                 showError={setErrorMessage} />
-            {renderDownload ? <Preloader /> : ''}
+            {renderLoading ? <Preloader /> : ''}
             {errorMessage.length !== 0 ? <p className='cards__search-message'>{errorMessage}</p> : <MoviesCardList movies={searchedMovies} />}
         </main>
     )

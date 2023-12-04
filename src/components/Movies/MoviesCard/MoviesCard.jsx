@@ -10,12 +10,11 @@ function MoviesCard({ movie, isSavedMoviePage, saveStatus }) {
 
     const { nameRU, duration, trailerLink } = movie;
     const { savedMovies, setSavedMovies } = useContext(CurrentUserContext);
-    const [isSavedMovie, setIsSavedMovie] = useState(saveStatus.isSaved);
+    const [isSavedMovie, setIsSavedMovie] = useState(() => saveStatus.isSaved);
     const [renderingloading, setRenderingloading] = useState(false)
     const [saveId, setSaveId] = useState(saveStatus.id);
     const imageSource = 'https://api.nomoreparties.co';
     const { pathname } = useLocation();
-
 
 
     // сохранить фильм
@@ -83,7 +82,7 @@ function MoviesCard({ movie, isSavedMoviePage, saveStatus }) {
                 <div className="movies-card__body">
                     <div className="movies-card__name">{nameRU}</div>
                     <div className="movies-card__duration">{`${duration}${' минут'}`}</div>
-                    <button className={isSavedMoviePage ? "movies-card__delete" : (isSavedMovie ? "movies-card__like_active" : "movies-card__like ")} aria-label="Сохранить фильм" type="button"
+                    <button className={isSavedMoviePage ? "movies-card__delete" : (isSavedMovie ? "movies-card__like_active" : "movies-card__like")} aria-label="Сохранить фильм" type="button"
                         onClick={isSavedMoviePage ? handleDeleteMovies : handleSaveMovies} >
                     </button>
                 </div>

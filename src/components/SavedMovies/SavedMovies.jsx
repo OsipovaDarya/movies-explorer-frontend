@@ -6,8 +6,6 @@ import { CurrentUserContext } from "../ErrorResult/Context/CurrentUserContext";
 import { useEffect, useState, useContext } from "react";
 
 
-
-
 function SavedMovies() {
     const [isStateShortFilms, setIsStateShortFilms] = useState(false);
     const [keyCondition, setKeyCondition] = useState('');

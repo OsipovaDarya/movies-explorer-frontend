@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import Main from '../Main/Main';
 import { useState, useEffect } from 'react';
 import './App.css';
@@ -18,7 +18,6 @@ import api from '../../utils/MainApi';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { useNavigate, Navigate } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRouts/ProtectedRouts';
-import { isCompositeComponent } from 'react-dom/test-utils';
 
 
 
@@ -35,6 +34,7 @@ function App() {
   const [renderingloading, setRenderingloading] = useState(false);
 
   const navigate = useNavigate();
+
 
 
 
@@ -90,12 +90,12 @@ function App() {
       Promise.all([api.getInfo(), api.getSavedMovies()])
         .then(([user, movies]) => {
           setCurrentUser(user);
-          setSavedMovies(movies);
+          setSavedMovies([...movies]);
         })
         .catch((err) => {
           console.log(err);
         })
-        .finally(() => { console.log("loggedIn::finally") });
+        .finally(() => { console.log("loggedIn::finally"); setRenderingloading(false) });
     }
   }, [loggedIn]);
 
@@ -152,7 +152,7 @@ function App() {
               <ProtectedRoute loggedIn={loggedIn}>
                 <>
                   <Header loggedIn={loggedIn} />
-                  <Movies loggedIn={loggedIn} />
+                  <Movies renderLoading={renderingloading} />
                   <Footer />
                 </>
               </ProtectedRoute>
