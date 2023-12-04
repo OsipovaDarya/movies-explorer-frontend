@@ -33,9 +33,9 @@ function SavedMovies() {
         getFilterMovies(keyWord, isStateShortFilms);
     };
 
-    const handleChangeSwitchFilm = (isChecked) => {
+    const handleChangeSwitchFilm = (isChecked, keyValue) => {
         setIsStateShortFilms(isChecked);
-        getFilterMovies(keyCondition, isChecked);
+        getFilterMovies(keyValue, isChecked);
     };
 
 

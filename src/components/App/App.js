@@ -89,7 +89,6 @@ function App() {
       setRenderingloading(true);
       Promise.all([api.getInfo(), api.getSavedMovies()])
         .then(([user, movies]) => {
-          console.log(user, 'afsafsafasfasf')
           setCurrentUser(user);
           setSavedMovies(movies);
         })
@@ -116,7 +115,7 @@ function App() {
         });
     } else
       setLoggedIn(false);
-  }, []);
+  }, [navigate]);
 
 
   function closeAllPopups() {

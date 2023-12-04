@@ -11,11 +11,10 @@ import { apiMovies } from '../../utils/MoviesApi';
 function Movies() {
     const [keyCondition, setKeyCondition] = useState(() => localStorage.getItem('storageKeyWord') || '');
     const [isStateShortFilms, setIsStateShortFilms] = useState(() => JSON.parse(localStorage.getItem('storageIsShort') || 'false'));
-    const [renderDownload, setrenderDownload] = useState(false);
+    const [renderDownload, setRenderDownload] = useState(false);
     const [searchedMovies, setSearchedMovies] = useState(() => JSON.parse(localStorage.getItem('storageSearchResult') || '[]'));
     const [errorMessage, setErrorMessage] = useState('');
     const { savedMovies } = useContext(CurrentUserContext);
-
 
     const storageAllMovies = JSON.parse(localStorage.getItem('storageAllMovies') || '[]')
 
@@ -24,15 +23,15 @@ function Movies() {
 
         function setupFilteredFilms(movies) {
             setSearchedMovies(movies);
-            console.log("fsdfsdf", localStorage)
             localStorage.setItem('storageSearchResult', JSON.stringify(movies));
             movies.length === 0 && !(storageAllMovies.length === 0)
                 ? setErrorMessage('Ничего не найдено')
                 : setErrorMessage('')
         };
 
+
         if (storageAllMovies.length === 0) {
-            setrenderDownload(true);
+            setRenderDownload(true);
             apiMovies.getMovies()
                 .then((allMovies) => {
                     localStorage.setItem('storageAllMovies', JSON.stringify(allMovies));
@@ -44,8 +43,10 @@ function Movies() {
                 .catch((err) => {
                     setErrorMessage('Ничего не найдено');
                 })
-                .finally(() => setrenderDownload(false));
+                .finally(() => setRenderDownload(false));
         } else {
+            console.log('3')
+
             const filteredMovies = keyWord
                 ? renderMovies(storageAllMovies, keyWord, isShortMovies)
                 : [];
@@ -58,6 +59,8 @@ function Movies() {
         getFilteredMovies(keyCondition, isStateShortFilms);
     }, [savedMovies]
     );
+
+
 
     const handleSubmitSearch = (keyWord) => {
         setKeyCondition(keyWord);

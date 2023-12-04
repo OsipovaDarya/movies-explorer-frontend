@@ -32,7 +32,6 @@ function Profile({ onSignOut, setRegistrForm, setIsEditInfoTooltip }) {
                 })
             })
             .catch(err => {
-                console.log('fsd', err);
                 setRegistrForm({
                     status: false,
                     text: "Не удалось редактировать",

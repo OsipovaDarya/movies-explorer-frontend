@@ -24,9 +24,7 @@ function MoviesCard({ movie, isSavedMoviePage, saveStatus }) {
 
         if (isSavedMovie) {
             setIsSavedMovie(false)
-            setSavedMovies(savedMovies.filter((item) => {
-                return !(item._id === saveId);
-            }));
+
             setSaveId(false);
             api.deleteMovies(saveId)
                 .then((data) => {

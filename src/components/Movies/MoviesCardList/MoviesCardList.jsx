@@ -16,7 +16,6 @@ function MoviesCardList({ movies, isDeletePage }) {
     const handleChangeDisplaySize = () => setDisplayWidth(window.innerWidth);
 
 
-
     useEffect(() => {
         window.addEventListener('resize', handleChangeDisplaySize);
         return () => {
@@ -76,7 +75,7 @@ function MoviesCardList({ movies, isDeletePage }) {
                 <MoviesCard
                     movie={movie}
                     isSavedMoviePage={isDeletePage}
-                    key={movie.movieId}
+                    key={movie._id}
                     saveStatus={{ isSaved: true, id: movie._id }}
                 />
             ));
