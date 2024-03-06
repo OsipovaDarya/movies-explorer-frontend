@@ -1,0 +1,135 @@
+.about-me {
+    margin: 110px 70px 120px;
+}
+
+.about-me__students-name {
+    max-width: 1140px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 23px;
+    margin: 0;
+}
+.about-me__container {
+    display: flex;
+    margin: 0;
+    justify-content: space-between;
+}
+
+.about-me__photo {
+    width: 100%;
+    max-width: 270px;
+    height: 100%;
+    max-height: 327px;
+    object-fit: cover;
+    margin: 66px 0 0 0;
+    border-radius: 10px;
+}
+.about-me__title {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin: 66px 0 0;
+}
+
+.about-me__subtitle {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: #000000;
+    mix-blend-mode: normal;
+    margin: 18px 0 26px 0;
+}
+
+.about-me__text {
+    max-width: 600px;
+    margin: 0 0 100px 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.about-me__github {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration: none;
+    color: #000000;
+}
+.about-me__portfolio {
+    margin: 101px 0 50px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: #a0a0a0;
+    mix-blend-mode: normal;
+}
+@media screen and (max-width: 768px) {
+    .about-me {
+        margin: 90px 50px;
+    }
+    .about-me__title {
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: -1.6px;
+    }
+    .about-me__subtitle {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 16px 0 20px 0;
+    }
+    .about-me__text {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        margin: 0 0 105px 0;
+    }
+    .about-me__photo {
+        max-height: 307px;
+        max-width: 255px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .about-me {
+        margin: 70px 14px 0px;
+    }
+    .about-me__students-name {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 26px;
+    }
+    .about-me__information {
+        grid-row: 2 / 2;
+    }
+    .about-me__container {
+        display: grid;
+        margin: 0;
+        grid-template-rows: 1fr 300px;
+        justify-items: center;
+    }
+    .about-me__photo {
+        max-height: 352px;
+        max-width: 292px;
+        margin: 60px 0 0 0;
+    }
+    .about-me__title {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        margin: 39px 0 0;
+    }
+    .about-me__subtitle {
+        font-size: 11px;
+        line-height: 16px;
+    }
+    .about-me__text {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0 0 55px 0;
+    }
+}

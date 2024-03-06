@@ -1,0 +1,137 @@
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+}
+
+.navigation__link {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.navigation__link_active {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.navigation__container {
+    display: flex;
+    align-items: center;
+}
+
+.navigation__films {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-decoration: none;
+    text-align: right;
+    margin-right: 20px;
+    color: #000000;
+}
+
+.navigation__account-link {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 50px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.navigation__profile {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+}
+
+.navigation__profile-logo {
+    padding: 9px;
+    background: #f9f9f9;
+}
+
+.navigation__links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+
+.navigation__auth-item {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+    color: #000000;
+}
+.navigation__auth-item-active:hover {
+    opacity: 0.8;
+}
+.navigation__auth-item:hover {
+    opacity: 0.8;
+}
+
+.navigation__auth-item-active {
+    padding: 7px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    border: none;
+    max-width: 76px;
+    background: #000000;
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.navigation__burger-menu {
+    background: none;
+    background-image: url(../../../src/images/icon__COLOR_icon-main.svg);
+    width: 44px;
+    height: 44px;
+    border: none;
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .navigation__container {
+        display: none;
+    }
+    .navigation__burger-menu {
+        display: flex;
+        cursor: pointer;
+    }
+    .navigation__auth-item-active {
+        padding: 7px 20px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .navigation__auth-item-active {
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 16px;
+        padding: 5px 12px;
+    }
+    .navigation__links {
+        gap: 14px;
+    }
+    .navigation__auth-item {
+        font-size: 10px;
+        line-height: 16px;
+        font-style: normal;
+    }
+    .navigation__burger-menu {
+        max-width: 30px;
+        margin-right: 10px;
+    }
+}

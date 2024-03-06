@@ -1,0 +1,10 @@
+.movies {
+    margin: 0 70px;
+    max-width: 1280px;
+    width: 100%;
+}
+@media screen and (max-width: 768px) {
+    .movies {
+        margin: 0 30px;
+    }
+}
